@@ -73,7 +73,7 @@ It's good to have the validation checks in place before fine tuning the model.Va
 
 #### MaxPooling
 
-Max pooling is one of the useful technique to reduce the number of layers and hence the computation.It reduces the output size of the layer to half hence helps in reducing the number of layers.The initial decision on the ###number of layers### can be relooked once we have max pooling in place.
+Max pooling is one of the useful technique to reduce the number of layers and hence the computation.It reduces the output size of the layer to half hence helps in reducing the number of layers.The initial decision on the **Number of Layers**can be relooked once we have max pooling in place.
 
 
 #### Position of MaxPooling
