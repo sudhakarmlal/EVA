@@ -51,13 +51,30 @@ After we dcide on the number of layers based on the no of and type of the images
 
 1 * 1 convolution would be useful to reduce the number of parameters and can be looked into after model has learned the basic stuff e.g Gradient,textures,colors and edges.1 * 1 convolution helps in reducing the number of parameters and also useful to combine various features e.g edges to make a curve. 
 
+
+
+#### Receptive Field,
+Once we decide on the number of layers and the convolutions used we would have a fair idea on the receptive field after the last layer convolution.The receptive field(the global receptive field) usually should be same as the size of the image if the object size is equal to image size.In case the object size is less than the image size we should stop at a lesser receptive field which is equal to size of the object
+
 #### Softmax
 
 Whether to use softmax or not should be decided much earlier as in case of a multiclass classification. Softmax is the output probabilities range. The range will 0 to 1, and the sum of all the probabilities will be equal to one. If the softmax function used for multi-classification model it returns the probabilities of each class and the target class will have the high probability.
 
-#### Receptive Field,
+
+#### Number of Epochs and when to increase them,
+
+With the above minimum information ie No of Layers,Kernels used,Receptive Field ,Softmax we can build up a plain vanilla model.
+At this point we can decide  the number of epochs to be run.If the model shows some increasing trend in validation accuracy we can decide to  increasing the number of epochs.
+
+#### When to add validation checks
+
+It's good to have the validation checks in place before fine tuning the model.Validation checks saves the best model when we run the model for multiple epochs.We can decide to have the validation checks in place before attempting any optimization techniques for the model.
+
 
 #### MaxPooling
+
+Max pooling is one of the useful technique to reduce the number of layers and hence the computation.It reduces the output size of the layer to half hence helps in reducing the number of layers.The initial decision on the ###number of layers### can be relooked once we have max pooling in place.
+
 
 #### Position of MaxPooling
 
@@ -79,7 +96,7 @@ Whether to use softmax or not should be decided much earlier as in case of a mul
 
 #### How do we know our network is not going well, comparatively, very early
 
-#### When to add validation checks
+
 
 #### LR schedule and concept behind it
 
@@ -89,7 +106,7 @@ Whether to use softmax or not should be decided much earlier as in case of a mul
 
 #### Position of Transition Layer,
 
-#### Number of Epochs and when to increase them,
+
 
 #### Learning Rate
 
