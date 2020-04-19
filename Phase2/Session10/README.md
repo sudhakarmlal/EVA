@@ -123,7 +123,7 @@ While invoking TD3N.Send the state as the state dimension as the Car(Nav.png).
 Action Dimensions as 1(ie rotation) and Max_action as 1(it could be 5 degree)
 This has to be invoked from map.py
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6-1TD3N.JPG)
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step7TD3N.JPG)
 
 
 
