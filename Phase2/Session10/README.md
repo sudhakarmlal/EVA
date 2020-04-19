@@ -1,4 +1,6 @@
-# Flow chart Session10-END GAM
+# Flow chart Session10-END GAME
+
+Below is the flow chart explaining END GAME.Following are the steps explained in detail.
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/FlowChartTD3N.JPG)
 
@@ -6,10 +8,17 @@
 
 **STEP1**
 
+Change the Car.png to  Nav.png in car.kv.The Nav.png to be used during training
+
+The below is the code which should be changed to replace the Car image with the Nav3.png in car.kv
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/T3DNStep1.JPG)
 
+
+The image used for Navigation is as shown below
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/StepT3DN1-2.JPG)
 
+Note:The Navigation image to be used for the training would go through the convolution.The convolution would predict the rotation of the car based on the action decided,the car would take the next step
 
 
 
