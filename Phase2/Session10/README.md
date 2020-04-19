@@ -64,18 +64,21 @@
 
 **STEP6**
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6TD3N.JPG)
-
-
-
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6-1TD3N.JPG)
-
-
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/TD3N6-Step6.JPG)
 
 
 
+
+
+
+
+
+
 **STEP7**
+
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6-1TD3N.JPG)
+
+
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-TD3N.JPG)
 
