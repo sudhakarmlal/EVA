@@ -80,10 +80,12 @@
 
 
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-TD3N.JPG)
+
 
 
 **STEP8**
+
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-TD3N.JPG)
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-1TD3N.JPG)
 
