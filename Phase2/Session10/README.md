@@ -50,8 +50,6 @@
 
 
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step5-1TD3N.JPG)
-
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step5-2TD3N.JPG)
 
 
