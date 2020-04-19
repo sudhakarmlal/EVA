@@ -57,15 +57,35 @@ There is ball related information in the Game class as well which has to be remo
 
 **STEP3**
 
+Create an Actor a CNN model that takes the Nav3.png(pixels) as input and outputs the action.Action could be the rotation of the car.
+This actor model has to be created in ai.py
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step3-TD3N.JPG)
 
 **STEP4**
 
+Create a Critic which takes both action and state as input .
+This Critic model has to be created in ai.py
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step4-TD3N.JPG)
 
 
 **STEP5**
+
+Create a TD3N Class which has this Actor and Critic Model and the code for Training the Model
+The TD3N Class has to be created in ai.py.
+It will have following functions:
+
+1.Init:To initialize the Actor and Critic models.
+
+2.Selection action:To select the next action
+
+3.Train:To train the Actor and Critic Models.
+
+4.Load the Model
+
+5.Save the Model
+
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step5-TD3N.JPG)
 
@@ -85,6 +105,8 @@ There is ball related information in the Game class as well which has to be remo
 
 **STEP6**
 
+Create a policy by invoking this TD3N instead of DQN from  map.py
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/TD3N6-Step6.JPG)
 
 
@@ -97,6 +119,10 @@ There is ball related information in the Game class as well which has to be remo
 
 **STEP7**
 
+While invoking TD3N.Send the state as the state dimension as the Car(Nav.png).
+Action Dimensions as 1(ie rotation) and Max_action as 1(it could be 5 degree)
+This has to be invoked from map.py
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6-1TD3N.JPG)
 
 
@@ -106,6 +132,11 @@ There is ball related information in the Game class as well which has to be remo
 
 **STEP8**
 
+Based on the action  i.e rotation move the car in that in that direction by calling 
+self.car.move(rotation)
+
+Below are the changes to the move function in map.py
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-TD3N.JPG)
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step8-1TD3N.JPG)
@@ -114,6 +145,10 @@ There is ball related information in the Game class as well which has to be remo
 
 
 **STEP9**
+
+Based on the car moved decide how much the car is on the sand/road.The velocity and reward for the car would set accordingly
+Following are the changes for the same in ai.py
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step9-TD3N.JPG)
 
 
@@ -122,7 +157,11 @@ There is ball related information in the Game class as well which has to be remo
 
 **STEP10**
 
+Store the new_state(after car has moved),done(1 or 0),previous state (before care moved) and the action taken in the replay buffer memory
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step10-TD3N.JPG)
+
+Repeat the step7-Step10 and  fill up the memory buffer.After 10,000  random steps once the TD3N model is train.Let Model decide which action to be taken
 
 **STEP11**
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step11-TD3N.JPG)
