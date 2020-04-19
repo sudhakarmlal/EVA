@@ -107,7 +107,7 @@ It will have following functions:
 
 Create a policy by invoking this TD3N instead of DQN from  map.py
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/TD3N6-Step6.JPG)
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step6-TD3N.JPG)
 
 
 
