@@ -60,7 +60,7 @@ There is ball related information in the Game class as well which has to be remo
 Create an Actor a CNN model that takes the Nav3.png(pixels) as input and outputs the action.Action could be the rotation of the car.
 This actor model has to be created in ai.py
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/ActorModelTD3N.JPG)
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/ActionModelTD3N.JPG)
 
 **STEP4**
 
