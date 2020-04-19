@@ -30,12 +30,22 @@ Note:The Navigation image to be used for the training would go through the convo
 
 **STEP2**
 
+In the car.kv,the below code has to be removed as we would not be using Sensors any more.
+
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step2TD3N.JPG)
+
+
+In the map.py,all the sensors related code has to be removed from the Car class.Also remove sensor related code in the move function used in the Car class 
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step2-2T3DN.JPG)
 
 
+
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step2-3TD3N.JPG)
+
+
+There is ball related information in the Game class as well which has to be removed.
 
 ![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step2-4T3DN.JPG)
 
