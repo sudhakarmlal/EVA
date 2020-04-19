@@ -1,6 +1,7 @@
 # yaml-beans-example
 
-![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session9/STEPS/STEP1.gif)
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/FlowChartTD3N.JPG)
+
 
 **STEP1**
 
