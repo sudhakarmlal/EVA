@@ -39,6 +39,12 @@ In the car.kv,the below code has to be removed as we would not be using Sensors 
 In the map.py,all the sensors related code has to be removed from the Car class.Also remove sensor related code in the move function used in the Car class 
 
 
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/T3Step2-Mod.JPG)
+
+
+
+![](https://github.com/sudhakarmlal/EVA/blob/master/Phase2/Session10/images/Step2-Mod2.JPG)
+
 
 There is ball related information in the Game class as well which has to be removed.
 
