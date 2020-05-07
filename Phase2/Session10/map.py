@@ -5,6 +5,7 @@ import numpy as np
 from random import random, randint
 import matplotlib.pyplot as plt
 import time
+import random
 
 # Importing the Kivy packages
 from kivy.app import App
@@ -22,7 +23,7 @@ from kivy.graphics.texture import Texture
 # Importing the Dqn object from our AI in ai.py
 from ai import T3DN
 from ai import  ReplayBuffer
-from ai import evaluate_policy
+#from ai import evaluate_policy
 
 # Adding this line if we don't want the right click to put a red point
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
@@ -35,6 +36,7 @@ last_x = 0
 last_y = 0
 n_points = 0
 length = 0
+random_itr = 0
 
 # Getting our AI, which we call "brain", and that contains our neural network that represents our Q-function
 #brain = T3DN(100,1,5)
@@ -67,34 +69,6 @@ policy_noise = 0.2 # STD of Gaussian noise added to the actions for the explorat
 noise_clip = 0.5 # Maximum value of the Gaussian noise added to the actions (policy)
 policy_freq = 2 # Number of iterations to wait before the policy network (Actor model) is updated
 
-#evaluations = [evaluate_policy(policy)]
-
-
-policy.train(replay_buffer, 10, batch_size, discount, tau, policy_noise, noise_clip, policy_freq)
-
-
-# Before 10000 timesteps, we play random actions
-  #if total_timesteps < start_timesteps:
-    #action = env.action_space.sample()
-  #else: # After 10000 timesteps, we switch to the model
-    #action = policy.select_action(np.array(obs))
-    # If the explore_noise parameter is not 0, we add noise to the action and we clip it
-    #if expl_noise != 0:
-      #action = (action + np.random.normal(0, expl_noise, size=env.action_space.shape[0])).clip(env.action_space.low, env.action_space.high)
-  
-  # The agent performs the action in the environment, then reaches the next state and receives the reward
-  #new_obs, reward, done, _ = env.step(action)
-  
-  # We check if the episode is done
-  #done_bool = 0 if episode_timesteps + 1 == env._max_episode_steps else float(done)
-  
-  # We increase the total reward
-  #episode_reward += reward
-
- 
- # We store the new transition into the Experience Replay memory (ReplayBuffer)
- #replay_buffer.add((obs, new_obs, action, reward, done_bool))
-
 
 
 # Initializing the map
@@ -110,6 +84,7 @@ def init():
     goal_x = 1420
     goal_y = 622
     first_update = False
+    random_itr = 0
     global swap
     swap = 0
 
@@ -138,17 +113,18 @@ class Car(Widget):
     #signal1 = NumericProperty(0)
     #signal2 = NumericProperty(0)
     #signal3 = NumericProperty(0)
-    signal = NumericProperty(0)
+    #signal = NumericProperty(0)
 
     def move(self, rotation):
         print("Inside Move......")
         self.pos = Vector(*self.velocity) + self.pos
+        print("Rotation is",rotation)
         self.rotation = rotation
         self.angle = self.angle + self.rotation
         #self.sensor1 = Vector(30, 0).rotate(self.angle) + self.pos
         #self.sensor2 = Vector(30, 0).rotate((self.angle+30)%360) + self.pos
         #self.sensor3 = Vector(30, 0).rotate((self.angle-30)%360) + self.pos
-        self.signal = int(np.sum(sand[int(self.sensor1_x)-10:int(self.sensor1_x)+10, int(self.sensor1_y)-10:int(self.sensor1_y)+10]))/400.
+        #self.signal = int(np.sum(sand[int(self.sensor1_x)-10:int(self.sensor1_x)+10, int(self.sensor1_y)-10:int(self.sensor1_y)+10]))/400.
         #self.signal2 = int(np.sum(sand[int(self.sensor2_x)-10:int(self.sensor2_x)+10, int(self.sensor2_y)-10:int(self.sensor2_y)+10]))/400.
         #self.signal3 = int(np.sum(sand[int(self.sensor3_x)-10:int(self.sensor3_x)+10, int(self.sensor3_y)-10:int(self.sensor3_y)+10]))/400.
         #if self.sensor1_x>longueur-10 or self.sensor1_x<10 or self.sensor1_y>largeur-10 or self.sensor1_y<10:
@@ -179,7 +155,7 @@ class Game(Widget):
         self.car.center = self.center
         self.car.velocity = Vector(6, 0)
 
-    def update(self, dt):
+    def moveandtrain(self, dt):
 
         #global brain
         global last_reward
@@ -190,16 +166,17 @@ class Game(Widget):
         global longueur
         global largeur
         global swap
+        global random_itr
         
 
         longueur = self.width
         largeur = self.height
         print("Width",longueur)
         print("Height",largeur)
-        print("Calling Self Update................")
+        
         if first_update:
             init()
-
+        print("Calling Self Update................",random_itr)    
         xx = goal_x - self.car.x
         yy = goal_y - self.car.y
         print("XX",xx)
@@ -209,13 +186,17 @@ class Game(Widget):
         orientation = Vector(*self.car.velocity).angle((xx,yy))/180.
         print("Orientation",orientation)
         #last_signal = [self.car.signal1, self.car.signal2, self.car.signal3, orientation, -orientation]
-        last_signal = [self.car.signal, orientation, -orientation]
+        #last_signal = [self.car.signal, orientation, -orientation]
         #action = policy.update(last_reward, last_signal)
         #print("LastReward",last_reward)
         #scores.append(brain.score())
-        rotation = action2rotation[action]
+        #rotation = action2rotation[action]
+        #for i in range(10000):
+        rotation=random.randint(-5, 5)
         print("Rotation",rotation)
+        obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
         self.car.move(rotation)
+        new_obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
         distance = np.sqrt((self.car.x - goal_x)**2 + (self.car.y - goal_y)**2)
         #self.ball1.pos = self.car.sensor1
         #self.ball2.pos = self.car.sensor2
@@ -258,7 +239,12 @@ class Game(Widget):
                 goal_y = 85
                 swap = 1
         last_distance = distance
-
+        
+        replay_buffer.add((obs, new_obs, rotation, last_reward, 0))
+        random_itr = random_itr +1
+        if random_itr == 10000:
+            policy.train(replay_buffer,1000)
+            
 # Adding the painting tools
 
 class MyPaintWidget(Widget):
@@ -302,7 +288,7 @@ class CarApp(App):
     def build(self):
         parent = Game()
         parent.serve_car()
-        Clock.schedule_interval(parent.update, 1.0/60.0)
+        Clock.schedule_interval(parent.moveandtrain, 1.0/60.0)
         self.painter = MyPaintWidget()
         clearbtn = Button(text = 'clear')
         savebtn = Button(text = 'save', pos = (parent.width, 0))
