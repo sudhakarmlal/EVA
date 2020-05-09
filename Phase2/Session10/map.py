@@ -194,9 +194,12 @@ class Game(Widget):
         #for i in range(10000):
         rotation=random.randint(-5, 5)
         print("Rotation",rotation)
-        obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
+        #obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
+        obs=sand[int(self.car.x)-20:int(self.car.x)+20, int(self.car.y)-20:int(self.car.y)+20]
+        #print("Obs shape",obs.shape)
         self.car.move(rotation)
-        new_obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
+        #new_obs = np.array(sand[int(self.car.x)+40:int(self.car.y)+40])
+        new_obs=sand[int(self.car.x)-20:int(self.car.x)+20, int(self.car.y)-20:int(self.car.y)+20]
         distance = np.sqrt((self.car.x - goal_x)**2 + (self.car.y - goal_y)**2)
         #self.ball1.pos = self.car.sensor1
         #self.ball2.pos = self.car.sensor2
